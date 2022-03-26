@@ -37,11 +37,13 @@ const OnlineUsersDisplay = ({ socket, isLogged, roomID }) => {
   ]);
 
   return (
-    <div className="userList">
-      <h3>Online Users: </h3>
-      {users.map((user, index) =>
-        user.email ? <span key={`userlist-${index}`}>{user.email}</span> : ""
-      )}
+    <div className="onlineUsersDisplay">
+        <h3>Online Users: </h3>
+      <div className="userList">
+        {users.map((user, index) =>
+          user.email ? <span key={`userlist-${index}`}>{user.email}</span> : ""
+        )}
+      </div>
     </div>
   );
 };
