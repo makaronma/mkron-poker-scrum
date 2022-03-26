@@ -1,13 +1,259 @@
-body {
+:root {
+  --primary-color: #b3e5fc;
+  --p-light-color: #e6ffff;
+  --p-dark-color: #82b3c9;
+
+  --secondary-color: #0277bd;
+  --s-light-color: #58a5f0;
+  --s-dark-color: #004c8c;
+
+  --p-text: #000000;
+  --s-text: #ffffff;
+
+  --card-color: #d8d8d8;
+  --card-selected-color: #112c50;
+  --card-selected-border-color: #91bded;
+
+  --main-wrap: 20;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+p,
+h3,
+h5 {
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App > div {
+  width: 100%;
+}
+
+.header {
+  height: 50px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+}
+
+.main {
+  height: calc(100% - 50px);
+  padding: 20px 40px;
+  display: flex;
+  max-width: 1700px;
+}
+
+.loginForm,
+.roomForm {
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  padding: 10px;
+  margin: auto;
+}
+
+.userArea {
+  width: 100%;
+  display: flex;
+}
+
+.userArea > div {
+  height: 100%;
+  border: 1px solid;
+}
+.userArea > div > div {
+  border: 1px solid;
+}
+
+.userArea > .left {
+  flex: 55;
+}
+.userArea > .right {
+  flex: 45;
+  display: flex;
+  flex-direction: column;
+}
+
+.pokerScrum {
+  height: 80%;
+}
+
+.chatRoom {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatRoomHead {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.messageDisplay {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.messageInputArea {
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+.messageInputArea form {
+  display: flex;
+  flex: 1;
+  padding: 5px;
+}
+
+.messageInputArea input {
+  flex: 1 1;
+  height: 3rem;
+  width: 0;
+  font-size: 1rem;
+}
+.messageInputArea button {
+  width: 15%;
+  min-width: 5rem;
+}
+
+.messageItem {
+  display: flex;
+  margin-bottom: 0.1em;
+  padding: 4px;
+}
+.messageItem p {
+  word-wrap: break-word;
+}
+.messageItem.right {
+  flex-direction: row-reverse;
+}
+
+.messageBox {
+  max-width: 80%;
+  padding: 5px 12px;
+  border-radius: 10px;
+  background-color: #b5d2dd;
+}
+.messageItem.right .messageBox {
+  background-color: #80b6e5;
+}
+.userEmail {
+  font-weight: 700;
+}
+
+.userList {
+  height: 20%;
+  overflow-y: scroll;
+}
+.userList span {
+  background: #ffdf6c;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  padding: 4px 8px;
+}
+.pokerScrum > div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 100%;
+}
+
+.cardsContainer {
+  width: 100%;
+  flex: 1 1;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+.card {
+  width: 18%;
+  aspect-ratio: 0.8;
+  background-color: var(--card-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.storiesContainer {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.storyItem {
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.confirmBtn {
+  margin: 0 auto;
+  display: flex;
+  background-color: var(--p-light-color);
+  border: 1px solid;
+  padding: 12px 45px;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .userArea {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 414px) {
+  .card {
+    width: 22%;
+  }
 }
