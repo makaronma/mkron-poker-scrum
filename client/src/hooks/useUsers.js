@@ -16,13 +16,13 @@ const useUsers = (socket) => {
     if (!socket) return;
 
     // new comer
-    socket.on("NEW_USERS", (arg) => {
-      setUsers((prevUsers) => [...prevUsers, arg.user]);
+    socket.on("NEW_USERS", (args) => {
+      setUsers((prevUsers) => [...prevUsers, args.user]);
     });
 
     // a user disconnect
-    socket.on("REMOVE_USER", (arg) => {
-      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== arg.id));
+    socket.on("REMOVE_USER", (args) => {
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== args.id));
     });
   }, [socket]);
 

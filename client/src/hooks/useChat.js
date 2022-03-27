@@ -13,8 +13,8 @@ const useChat = (socket, serverRestarted) => {
     });
 
     // Update new msg
-    socket.on("NEW_MESSAGE", (arg) => {
-      setMessages((pMessages) => [...pMessages, arg.newMessage]);
+    socket.on("NEW_MESSAGE", (args) => {
+      setMessages((pMessages) => [...pMessages, args.newMessage]);
     });
   }, [socket]);
 

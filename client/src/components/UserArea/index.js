@@ -10,7 +10,7 @@ const UserArea = ({ socket }) => {
   return (
     <div className="userArea">
       <div className="left">
-        <PokerScrum />
+        <PokerScrum socket={socket} />
         <OnlineUsersDisplay users={users} />
       </div>
       <div className="right">

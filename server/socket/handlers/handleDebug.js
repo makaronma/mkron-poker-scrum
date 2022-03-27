@@ -1,5 +1,5 @@
 const handleDebug = (socket, data, user) => {
-  socket.on("DEBUG", (arg, cb) => {
+  socket.on("DEBUG", (args, cb) => {
     console.log(`[DEBUG]`);
 
     cb(data);

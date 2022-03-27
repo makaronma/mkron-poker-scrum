@@ -3,6 +3,8 @@ const handleUser = require("./handleUser");
 const handleChat = require("./handleChat");
 const handleRoom = require("./handleRoom");
 const handleDebug = require("./handleDebug");
+const handleStory = require("./handleStory");
+const handlePoll = require("./handlePoll");
 
 module.exports = {
   handleConnection,
@@ -10,4 +12,6 @@ module.exports = {
   handleChat,
   handleRoom,
   handleDebug,
+  handleStory,
+  handlePoll,
 };

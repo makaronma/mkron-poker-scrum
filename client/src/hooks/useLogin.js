@@ -10,7 +10,7 @@ const useLogin = (socket, serverRestarted, setServerRestarted) => {
   const handleLogin = useCallback(
     (e) => {
       e.preventDefault();
-      const email = emailRef.current.value;
+      const email = emailRef.current.value.toLowerCase();
 
       // if contain spaces
       if (containSpace(email)) {

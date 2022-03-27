@@ -52,6 +52,12 @@ h5 {
   margin: 0;
 }
 
+th,
+td {
+  padding: 8px;
+  outline: 1px solid;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -82,6 +88,7 @@ h5 {
 .main {
   height: calc(100% - 50px);
   max-width: 1700px;
+  min-height: 460px;
   padding: 20px 40px;
   display: flex;
 }
@@ -101,14 +108,16 @@ h5 {
 
 .userArea > div {
   height: 100%;
-  border: 1px solid;
+  outline: 1px solid;
 }
 .userArea > div > div {
-  border: 1px solid;
+  outline: 1px solid;
 }
 
 .userArea > .left {
   flex: 55;
+  max-width: 55%;
+  overflow: hidden;
 }
 .userArea > .right {
   flex: 45;
@@ -242,10 +251,15 @@ h5 {
   cursor: pointer;
 }
 
+.card.selected {
+  background-color: #fbd662;
+  outline: 2px solid #1f399f;
+}
+
 .storiesContainer {
   width: 100%;
   height: 100%;
-  padding-right: 10px;
+  padding: 5px 10px 0 10px;
   margin-bottom: 0.5rem;
   overflow-y: scroll;
   flex: 1 1;
@@ -255,7 +269,7 @@ h5 {
 }
 
 .storyItem {
-  border: 1px solid black;
+  outline: 1px solid black;
   padding: 10px;
   cursor: pointer;
 }
@@ -264,7 +278,7 @@ h5 {
   margin: 0 auto;
   display: flex;
   background-color: var(--p-light-color);
-  border: 1px solid;
+  outline: 1px solid;
   padding: 8px 35px;
   user-select: none;
   cursor: pointer;
@@ -272,13 +286,30 @@ h5 {
 }
 
 .main h3,
+.main h4,
 .main p {
   margin-bottom: 6px;
+}
+
+.storyItem.selected {
+  background-color: #80b6e5;
+}
+
+.resultBoard {
+  width: 100%;
+}
+
+.resultBoard .email {
+  word-break: break-all;
 }
 
 @media screen and (max-width: 767px) {
   .userArea {
     flex-direction: column;
+    min-height: 1200px;
+  }
+  .userArea > .left {
+    max-width: unset;
   }
 }
 @media screen and (max-width: 414px) {

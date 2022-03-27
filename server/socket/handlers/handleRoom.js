@@ -1,8 +1,9 @@
+const { createEmptyRoom } = require("./utils");
+
 const handleRoom = (socket, data, user) => {
   socket.on("JOIN_ROOM", ({ roomID }, cb) => {
     if (!user.email) return;
 
-    
     console.log(`[USER_JOIN_ROOM]: room-{${roomID}} (${user.id})`);
 
     // Update room of this user
@@ -12,21 +13,12 @@ const handleRoom = (socket, data, user) => {
     const existRoom = data.rooms.find((r) => r.id === roomID);
     if (existRoom) {
       // Add user to room
-      existRoom.users = [...existRoom.users, user]; 
+      existRoom.users = [...existRoom.users, user];
     } else {
       // Create a new room
-      const newRoom = {
-        id: roomID,
-        users: [user],
-        messages: [],
-        choices: [],
-        stories: [
-          "implement chat feature",
-          "add KYC UI to back office",
-          "create FX market stop order",
-        ],
-      };
-      // Add user to room
+      const newRoom = createEmptyRoom(roomID);
+      newRoom.users = [...newRoom.users, user];
+      // Add user to room 
       data.rooms = [...data.rooms, newRoom];
     }
 

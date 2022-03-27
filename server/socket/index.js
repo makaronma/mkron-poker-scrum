@@ -4,6 +4,8 @@ const {
   handleRoom,
   handleChat,
   handleDebug,
+  handleStory,
+  handlePoll,
 } = require("./handlers");
 
 const data = {
@@ -16,10 +18,12 @@ const socket = (io) => {
     const user = { id: null, email: null };
 
     handleConnection(socket, data, user);
-    
-    handleUser(socket, data, user);
+
+    handleUser(socket, data, user, io);
     handleRoom(socket, data, user);
     handleChat(socket, data, user);
+    handleStory(socket, data, user, io);
+    handlePoll(socket, data, user, io);
 
     handleDebug(socket, data, user);
   });

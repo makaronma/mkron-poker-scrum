@@ -6,8 +6,8 @@ import useLogin from "./hooks/useLogin";
 import useRoom from "./hooks/useRoom";
 
 // Components
-import LoginForm from "./components/LoginForm";
-import RoomForm from "./components/RoomForm";
+import LoginForm from "./components/common/LoginForm";
+import RoomForm from "./components/common/RoomForm";
 import UserArea from "./components/UserArea";
 
 function App() {

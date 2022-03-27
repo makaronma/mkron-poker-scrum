@@ -2,14 +2,14 @@ const { v4: uuidv4 } = require("uuid");
 const { getUserRoom } = require("./utils");
 
 const handleChat = (socket, data, user) => {
-  socket.on("NEW_MESSAGE", (arg, cb) => {
-    if (!user.email || !user.room) return;
+  socket.on("NEW_MESSAGE", (args, cb) => {
+    if (!user.email || !user.roomID) return;
     console.log(
-      `[USER_ADD_NEW_MESSAGE]: room-{${user.roomID}} {${arg.newMessage}} (${user.id})`
+      `[USER_ADD_NEW_MESSAGE]: room-{${user.roomID}} {${args.newMessage}} (${user.id})`
     );
 
     const newMessage = {
-      message: arg.newMessage,
+      message: args.newMessage,
       user: {
         id: user.id,
         email: user.email,
@@ -25,11 +25,11 @@ const handleChat = (socket, data, user) => {
     socket.to(user.roomID).emit("NEW_MESSAGE", { newMessage });
   });
 
-  socket.on("ALL_MESSAGES", (arg, cb) => {
+  socket.on("ALL_MESSAGES", (args, cb) => {
     if (!user.email || !user.roomID) return;
 
     console.log(
-      `[USER_REQUEST_ALL_MESSAGE]: room-{${user.roomID}} (${user.id})`
+      `[REQUEST_ALL_MESSAGE]: room-{${user.roomID}} (${user.id})`
     );
 
     // Send All Users of this room
