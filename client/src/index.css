@@ -246,6 +246,7 @@ h5 {
   width: 100%;
   height: 100%;
   padding-right: 10px;
+  margin-bottom: 0.5rem;
   overflow-y: scroll;
   flex: 1 1;
   display: flex;

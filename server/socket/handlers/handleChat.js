@@ -3,7 +3,7 @@ const { getUserRoom } = require("./utils");
 
 const handleChat = (socket, data, user) => {
   socket.on("NEW_MESSAGE", (arg, cb) => {
-    console.log(`[USER_ADD_NEW_MESSAGE]: room-{${user.roomID}} (${user.id})`);
+    console.log(`[USER_ADD_NEW_MESSAGE]: room-{${user.roomID}} {${arg.newMessage}} (${user.id})`);
 
     const newMessage = {
       message: arg.newMessage,

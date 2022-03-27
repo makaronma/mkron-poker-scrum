@@ -1,7 +1,7 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef, useState, useEffect } from "react";
 import { containSpace, isEmailValid } from "../utils";
 
-const useLogin = (socket) => {
+const useLogin = (socket, serverRestarted, setServerRestarted) => {
   const [isLogged, setIsLogged] = useState(false);
   const [isLogging, setIsLogging] = useState(false);
   const [error, setError] = useState(null);
@@ -30,6 +30,15 @@ const useLogin = (socket) => {
     },
     [socket]
   );
+
+  useEffect(() => {
+    if (!serverRestarted) return;
+    console.log("reseting login");
+    setError(null);
+    setIsLogging(false);
+    setIsLogged(false);
+    setServerRestarted(false);
+  }, [serverRestarted, setServerRestarted]);
 
   return { emailRef, handleLogin, isLogged, isLogging, error };
 };

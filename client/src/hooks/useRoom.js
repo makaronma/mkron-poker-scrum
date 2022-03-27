@@ -1,7 +1,7 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { containSpace } from "../utils";
 
-const useRoom = (socket) => {
+const useRoom = (socket, serverRestarted, setServerRestarted) => {
   const [roomID, setRoomID] = useState("");
   const [error, setError] = useState(null);
 
@@ -34,6 +34,13 @@ const useRoom = (socket) => {
     },
     [setRoomID, socket]
   );
+
+  useEffect(() => {
+    if (!serverRestarted) return;
+    console.log("reseting room");
+    setIsJoined(false);
+    setRoomID("");
+  }, [serverRestarted]);
 
   return { roomRef, handleChooseRoom, roomID, isJoined, error };
 };

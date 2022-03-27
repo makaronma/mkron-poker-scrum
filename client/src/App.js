@@ -11,14 +11,14 @@ import RoomForm from "./components/RoomForm";
 import UserArea from "./components/UserArea";
 
 function App() {
-  const { socket } = useSocketSetup();
+  const { socket, serverRestarted, setServerRestarted } = useSocketSetup();
   const {
     emailRef,
     handleLogin,
     isLogged,
     isLogging,
     error: loginError,
-  } = useLogin(socket);
+  } = useLogin(socket, serverRestarted, setServerRestarted);
 
   const {
     roomRef,
@@ -26,7 +26,7 @@ function App() {
     roomID,
     isJoined,
     error: roomError,
-  } = useRoom(socket);
+  } = useRoom(socket, serverRestarted, setServerRestarted);
 
   const handleDebug = useCallback(() => {
     socket.emit("DEBUG", null, (res) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const useChat = (socket) => {
+const useChat = (socket, serverRestarted) => {
   const [messages, setMessages] = useState([]);
   const [unsentMessages, setUnsentMessages] = useState([]);
   const msgInputRef = useRef();
@@ -47,6 +47,13 @@ const useChat = (socket) => {
     },
     [socket]
   );
+
+  useEffect(() => {
+    if (!serverRestarted) return;
+    console.log("reseting chat");
+    setMessages([]);
+    setUnsentMessages([]);
+  }, [serverRestarted]);
 
   return { messages, unsentMessages, msgInputRef, handleSendMessage };
 };

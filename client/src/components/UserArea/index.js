@@ -1,7 +1,23 @@
-import UserArea from "./UserArea";
+import useUsers from "../../hooks/useUsers";
 
-const index = ({ socket }) => {
-  return <UserArea socket={socket} />;
+import ChatRoom from "./ChatRoom";
+import OnlineUsersDisplay from "./OnlineUsersDisplay";
+import PokerScrum from "./PokerScrum";
+
+const UserArea = ({ socket }) => {
+  const { users } = useUsers(socket);
+
+  return (
+    <div className="userArea">
+      <div className="left">
+        <PokerScrum />
+        <OnlineUsersDisplay users={users} />
+      </div>
+      <div className="right">
+        <ChatRoom socket={socket} />
+      </div>
+    </div>
+  );
 };
 
-export default index;
+export default UserArea;
