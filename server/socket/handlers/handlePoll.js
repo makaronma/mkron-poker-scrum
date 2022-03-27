@@ -23,7 +23,6 @@ const handlePoll = (socket, data, user, io) => {
 
     // if all polled, send result
     if (room.game.players.length === room.game.polls.length) {
-      console.log("all polled");
       console.log(`[POLL_FULLFILLED]: room-{${user.roomID}} (${user.id})`);
       io.to(room.id).emit("POLL_RESULT", {
         result: room.game.polls,

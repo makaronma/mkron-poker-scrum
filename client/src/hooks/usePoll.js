@@ -14,8 +14,6 @@ const usePoll = (socket) => {
   const handleChoosePoll = useCallback(
     (e, selected) => {
       e.preventDefault();
-      console.log("choose poll");
-      console.log(selected);
       socket.emit("CHOOSE_POLL", { poll: "1" });
     },
     [socket]
