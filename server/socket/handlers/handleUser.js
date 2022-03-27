@@ -12,6 +12,8 @@ const handleUser = (socket, data, user) => {
   });
 
   socket.on("JOIN_ROOM", ({ roomID }, cb) => {
+    if (!user.email) return;
+
     console.log(`[USER_JOIN_ROOM]: ${roomID} (${user.id})`);
 
     // Add this user to all users in the room
@@ -19,6 +21,8 @@ const handleUser = (socket, data, user) => {
   });
 
   socket.on("ALL_USERS", (arg, cb) => {
+    if (!user.email || !user.roomID) return;
+
     console.log(`[REQUEST_ALL_USERS]: room-{${user.roomID}} (${user.id})`);
 
     // Send All Users of this room

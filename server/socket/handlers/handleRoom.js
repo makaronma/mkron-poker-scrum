@@ -1,5 +1,8 @@
 const handleRoom = (socket, data, user) => {
   socket.on("JOIN_ROOM", ({ roomID }, cb) => {
+    if (!user.email) return;
+
+    
     console.log(`[USER_JOIN_ROOM]: room-{${roomID}} (${user.id})`);
 
     // Update room of this user

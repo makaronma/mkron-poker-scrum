@@ -14,8 +14,9 @@ const socket = (io) => {
   io.on("connection", (socket) => {
     socket.emit("SERVER_RESTART", null);
     const user = { id: null, email: null };
-  
+
     handleConnection(socket, data, user);
+    
     handleUser(socket, data, user);
     handleRoom(socket, data, user);
     handleChat(socket, data, user);
