@@ -2,26 +2,30 @@ import { useState, useEffect, useCallback } from "react";
 
 const usePoll = (socket) => {
   const [result, setResult] = useState(null);
+  const [loadingPolls, setLoadingPolls] = useState(false);
 
   useEffect(() => {
     if (!socket) return;
 
     socket.on("POLL_RESULT", (args) => {
       setResult(args.result);
+      setLoadingPolls(false);
     });
   }, [socket]);
 
   const handleChoosePoll = useCallback(
-    (e, selected) => {
+    (e, poll) => {
       e.preventDefault();
-      socket.emit("CHOOSE_POLL", { poll: "1" });
+      // prevent select after submit
+      setLoadingPolls(true);
+      socket.emit("CHOOSE_POLL", { poll });
     },
     [socket]
   );
 
   // sort result by poll val
 
-  return { handleChoosePoll, result };
+  return { handleChoosePoll, result, loadingPolls };
 };
 
 export default usePoll;

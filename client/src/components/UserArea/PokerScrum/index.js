@@ -4,14 +4,19 @@ import ChooseStoryArea from "./ChooseStoryArea";
 import PollingArea from "./PollingArea";
 
 const PokerScrum = ({ socket }) => {
-  const { stories, activeStoryIndex, handleChooseStory, started, loading } =
-    useStory(socket);
+  const {
+    stories,
+    activeStoryIndex,
+    handleChooseStory,
+    started,
+    loading: loadingStories,
+  } = useStory(socket);
 
-  const { handleChoosePoll, result } = usePoll(socket);
+  const { handleChoosePoll, result, loadingPolls } = usePoll(socket);
 
   return (
     <div className="pokerScrum">
-      {loading ? (
+      {loadingStories ? (
         <p>Loading . . .</p>
       ) : started ? (
         <p>Started. Please wait the polling finish</p>
@@ -21,6 +26,7 @@ const PokerScrum = ({ socket }) => {
           activeStoryIndex={activeStoryIndex}
           handleChoosePoll={handleChoosePoll}
           result={result}
+          loadingPolls={loadingPolls}
         />
       ) : (
         <ChooseStoryArea

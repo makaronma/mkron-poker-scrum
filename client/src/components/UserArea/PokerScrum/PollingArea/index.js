@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "./Card";
+import ResultBoard from "./ResultBoard";
 
 const cards = [1, 2, 3, 8, 13, "no_idea", "resign"];
 
@@ -8,33 +9,15 @@ const PollingArea = ({
   activeStoryIndex,
   handleChoosePoll,
   result,
+  loadingPolls,
 }) => {
   const [selected, setSelected] = useState(0);
 
   return (
     <div className="pollingArea">
       <h3>Current Active Story: {stories[activeStoryIndex]}</h3>
-
       {result ? (
-        <>
-          <h4>Result: </h4>
-          <table className="resultBoard">
-            <thead>
-              <tr className="row">
-                <th>User</th>
-                <th>Poll</th>
-              </tr>
-            </thead>
-            <tbody>
-              {result.map((r, index) => (
-                <tr key={`poll-result-row-${index}`}>
-                  <td>{r.user.email}</td>
-                  <td>{r.poll}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
+        <ResultBoard result={result} />
       ) : (
         <>
           <p>Select a card:</p>
@@ -46,15 +29,21 @@ const PollingArea = ({
                 index={index}
                 setSelected={setSelected}
                 isSelected={selected === index}
+                loadingPolls={loadingPolls}
               />
             ))}
           </div>
-          <div
-            className="confirmBtn"
-            onClick={(e) => handleChoosePoll(e, selected)}
-          >
-            Confirm
-          </div>
+
+          {loadingPolls ? (
+            <p>Waiting for others polls</p>
+          ) : (
+            <div
+              className="confirmBtn"
+              onClick={(e) => handleChoosePoll(e, cards[selected])}
+            >
+              Confirm
+            </div>
+          )}
         </>
       )}
     </div>

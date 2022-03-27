@@ -299,8 +299,11 @@ td {
   width: 100%;
 }
 
-.resultBoard .email {
+.resultBoard td {
   word-break: break-all;
+}
+.resultBoard .poll {
+  text-align: center;
 }
 
 @media screen and (max-width: 767px) {
