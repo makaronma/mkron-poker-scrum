@@ -8,8 +8,8 @@ const PollingArea = ({ activeStory }) => {
       <h3>Current Active Story: {activeStory}</h3>
       <p>Select a card:</p>
       <div className="cardsContainer">
-        {cards.map((val) => (
-          <Card val={val} />
+        {cards.map((val, index) => (
+          <Card val={val} key={`poker-card-${index}`} />
         ))}
       </div>
       <div className="confirmBtn">Confirm</div>

@@ -1,19 +1,7 @@
-import ChatRoom from "./ChatRoom";
-import OnlineUsersDisplay from "./OnlineUsersDisplay";
-import PokerScrum from "./PokerScrum";
+import UserArea from "./UserArea";
 
-const index = () => {
-  return (
-    <div className="userArea">
-      <div className="left">
-        <PokerScrum />
-        <OnlineUsersDisplay />
-      </div>
-      <div className="right">
-        <ChatRoom />
-      </div>
-    </div>
-  );
+const index = ({ socket }) => {
+  return <UserArea socket={socket} />;
 };
 
 export default index;

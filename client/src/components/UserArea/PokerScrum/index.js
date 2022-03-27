@@ -23,8 +23,8 @@ const PokerScrum = () => {
 
   return (
     <div className="pokerScrum">
-      {/* <ChooseStoryArea stories={stories} /> */}
-      <PollingArea activeStory={stories[activeIndex]} />
+      <ChooseStoryArea stories={stories} />
+      {/* <PollingArea activeStory={stories[activeIndex]} /> */}
     </div>
   );
 };

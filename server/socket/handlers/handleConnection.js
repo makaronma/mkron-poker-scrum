@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
+const { getUserRoom } = require("./utils");
 
 // Handle:
 // Connect
@@ -21,7 +22,7 @@ const handleConnection = (socket, data, user) => {
       // Tell users in the same room to remove this user
       socket.to(user.roomID).emit("REMOVE_USER", { id });
     }
-    
+
     console.log(`[USER_DISCONNECTED]: (${user.id})`);
   });
 

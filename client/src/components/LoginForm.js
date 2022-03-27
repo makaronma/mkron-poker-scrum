@@ -1,30 +1,17 @@
-import { useState, useRef, useCallback } from "react";
 import ErrorMessage from "./ErrorMessage";
 
-const LoginForm = () => {
-  const [isLogging, setIsLogging] = useState(false);
-  const [error, setError] = useState();
-  const emailRef = useRef();
-
-  const handleLogin = useCallback(() => {
-    const email = emailRef.current.value;
-    console.log(`login with${email}`);
-  }, []);
-
+const LoginForm = ({ emailRef, handleLogin, isLogging, error }) => {
   return (
     <>
-      {isLogging ? (
-        "Loading . . ."
-      ) : (
-        <div className="loginForm">
-          <h5>Input Your Email: </h5>
-          <form onSubmit={handleLogin}>
-            <input type="text" className="email" ref={emailRef} />
-            <button type="submit">Login</button>
-          </form>
-          <ErrorMessage error={error} />
-        </div>
-      )}
+      <div className="loginForm">
+        <h5>Input Your Email: </h5>
+        <form onSubmit={handleLogin}>
+          <input type="text" className="email" ref={emailRef} />
+          <button type="submit">Login</button>
+        </form>
+        <ErrorMessage error={error} />
+        {isLogging && <div>Logging. . . </div>}
+      </div>
     </>
   );
 };

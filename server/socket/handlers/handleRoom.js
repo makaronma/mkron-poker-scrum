@@ -9,7 +9,7 @@ const handleRoom = (socket, data, user) => {
     const existRoom = data.rooms.find((r) => r.id === roomID);
     if (existRoom) {
       // Add user to room
-      existRoom.users = [...existRoom.users, user];
+      existRoom.users = [...existRoom.users, user]; 
     } else {
       // Create a new room
       const newRoom = {

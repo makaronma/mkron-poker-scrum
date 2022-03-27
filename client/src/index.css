@@ -44,7 +44,10 @@ code {
 }
 
 p,
+h1,
+h2,
 h3,
+h4,
 h5 {
   margin: 0;
 }
@@ -63,17 +66,24 @@ h5 {
   height: 50px;
   background-color: var(--primary-color);
   display: flex;
-  justify-content: center;
+  padding-left: 40px;
   align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
   font-size: large;
-  font-weight: bold;
+}
+
+.header .roomID {
+  margin-left: 2px;
 }
 
 .main {
   height: calc(100% - 50px);
+  max-width: 1700px;
   padding: 20px 40px;
   display: flex;
-  max-width: 1700px;
 }
 
 .loginForm,
@@ -194,6 +204,7 @@ h5 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
 }
 .userList span {
   background: #ffdf6c;
@@ -259,8 +270,8 @@ h5 {
   border-radius: 10px;
 }
 
-h3,
-p {
+.main h3,
+.main p {
   margin-bottom: 6px;
 }
 

@@ -1,13 +1,6 @@
-import { useState, useRef, useCallback } from "react";
-
 import ErrorMessage from "./ErrorMessage";
-const RoomForm = () => {
-  const [roomID, setRoomID] = useState();
-  const [isJoined, setIsJoined] = useState(false);
-  const roomRef = useRef();
-  const handleChooseRoom = useCallback(() => {}, []);
-  const [error, setError] = useState();
 
+const RoomForm = ({ roomRef, handleChooseRoom, roomID, isJoined, error }) => {
   return (
     <>
       {!roomID ? (

@@ -1,3 +1,5 @@
+const { getUserRoom } = require("./utils");
+
 const handleUser = (socket, data, user) => {
   socket.on("LOGIN", ({ email }, cb) => {
     console.log(`[USER_LOGIN]: ${email} (${user.id})`);
@@ -8,14 +10,14 @@ const handleUser = (socket, data, user) => {
       isLogged: true,
     });
   });
-  
+
   socket.on("JOIN_ROOM", ({ roomID }, cb) => {
     console.log(`[USER_JOIN_ROOM]: ${roomID} (${user.id})`);
-    
+
     // Add this user to all users in the room
     socket.to(roomID).emit("NEW_USERS", { user });
   });
-  
+
   socket.on("ALL_USERS", (arg, cb) => {
     console.log(`[REQUEST_ALL_USERS]: room-{${user.roomID}} (${user.id})`);
 
