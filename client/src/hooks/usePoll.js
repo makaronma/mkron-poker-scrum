@@ -4,6 +4,11 @@ const usePoll = (socket) => {
   const [result, setResult] = useState(null);
   const [loadingPolls, setLoadingPolls] = useState(false);
 
+  const resetPoll = useCallback(() => {
+    setResult(null);
+    setLoadingPolls(false);
+  }, []);
+
   useEffect(() => {
     if (!socket) return;
 
@@ -11,7 +16,12 @@ const usePoll = (socket) => {
       setResult(args.result);
       setLoadingPolls(false);
     });
-  }, [socket]);
+
+    socket.on("RESTART_GAME", () => {
+      console.log("restart game from server");
+      resetPoll();
+    });
+  }, [socket, resetPoll]);
 
   const handleChoosePoll = useCallback(
     (e, poll) => {
@@ -23,9 +33,16 @@ const usePoll = (socket) => {
     [socket]
   );
 
-  // sort result by poll val
+  const handleRetart = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log("restart");
+      socket.emit("RESTART_GAME");
+    },
+    [socket]
+  );
 
-  return { handleChoosePoll, result, loadingPolls };
+  return { handleChoosePoll, result, loadingPolls, handleRetart };
 };
 
 export default usePoll;

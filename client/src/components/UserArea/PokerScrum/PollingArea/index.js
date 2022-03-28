@@ -10,6 +10,7 @@ const PollingArea = ({
   handleChoosePoll,
   result,
   loadingPolls,
+  handleRetart,
 }) => {
   const [selected, setSelected] = useState(0);
 
@@ -17,7 +18,7 @@ const PollingArea = ({
     <div className="pollingArea">
       <h3>Current Active Story: {stories[activeStoryIndex]}</h3>
       {result ? (
-        <ResultBoard result={result} />
+        <ResultBoard result={result} handleRetart={handleRetart} />
       ) : (
         <>
           <p>Select a card:</p>

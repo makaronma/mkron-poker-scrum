@@ -12,7 +12,8 @@ const PokerScrum = ({ socket }) => {
     loading: loadingStories,
   } = useStory(socket);
 
-  const { handleChoosePoll, result, loadingPolls } = usePoll(socket);
+  const { handleChoosePoll, result, loadingPolls, handleRetart } =
+    usePoll(socket);
 
   return (
     <div className="pokerScrum">
@@ -27,6 +28,7 @@ const PokerScrum = ({ socket }) => {
           handleChoosePoll={handleChoosePoll}
           result={result}
           loadingPolls={loadingPolls}
+          handleRetart={handleRetart}
         />
       ) : (
         <ChooseStoryArea

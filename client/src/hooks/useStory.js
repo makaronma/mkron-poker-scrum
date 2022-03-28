@@ -8,6 +8,11 @@ const useStory = (socket) => {
 
   const [loading, setLoading] = useState(true);
 
+  const resetStory = useCallback(() => {
+    setStarted(false);
+    setActiveStoryIndex(null);
+  }, []);
+
   useEffect(() => {
     if (!socket) return;
     // init
@@ -21,7 +26,12 @@ const useStory = (socket) => {
       }
       setLoading(false);
     });
-  }, [socket]);
+
+    socket.on("RESTART_GAME", () => {
+      console.log("restart game from server");
+      resetStory();
+    });
+  }, [socket, resetStory]);
 
   useEffect(() => {
     if (!socket) return;

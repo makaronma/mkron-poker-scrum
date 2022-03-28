@@ -298,6 +298,9 @@ td {
 .resultBoard {
   width: 100%;
 }
+.resultBoard table {
+  width: 100%;
+}
 
 .resultBoard td {
   word-break: break-all;
