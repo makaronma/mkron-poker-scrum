@@ -297,6 +297,7 @@ td {
 
 .resultBoard {
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 .resultBoard table {
   width: 100%;
