@@ -240,7 +240,7 @@ td {
   margin-top: 1rem;
 }
 .card {
-  width: 18%;
+  width: 12%;
   aspect-ratio: 0.8;
   background-color: var(--card-color);
   border-radius: 5px;
