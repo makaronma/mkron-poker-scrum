@@ -72,7 +72,7 @@ td {
   height: 50px;
   background-color: var(--primary-color);
   display: flex;
-  padding-left: 40px;
+  padding: 0 40px;
   align-items: center;
   justify-content: space-between;
 }

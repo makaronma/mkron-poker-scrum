@@ -28,11 +28,11 @@ function App() {
     error: roomError,
   } = useRoom(socket, serverRestarted, setServerRestarted);
 
-  const handleDebug = useCallback(() => {
-    socket.emit("DEBUG", null, (res) => {
-      console.log(res);
-    });
-  }, [socket]);
+  // const handleDebug = useCallback(() => {
+  //   socket.emit("DEBUG", null, (res) => {
+  //     console.log(res);
+  //   });
+  // }, [socket]);
 
   return (
     <div className="App">
