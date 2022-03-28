@@ -2,6 +2,13 @@
 
 A web app that used for playing Scrum poker.
 
+## Features
+
+* Poker Scrum Polling
+* Join different rooms
+* Show Online users
+* Live Chat
+
 ## Tech Stack
 
 ### Frontend
