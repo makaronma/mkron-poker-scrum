@@ -39,7 +39,7 @@ function App() {
       <div className="header">
         <h1>POKER SCRUM</h1>
         {isJoined && <h3 className="roomID">Room ID: {roomID}</h3>}
-        <button onClick={handleDebug}>Debug</button>
+        {/* <button onClick={handleDebug}>Debug</button> */}
       </div>
       <div className="main">
         {!isLogged ? (
