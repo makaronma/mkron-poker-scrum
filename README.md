@@ -7,7 +7,6 @@ A web app that used for playing Scrum poker.
 ### Frontend
 
 * React
-
 * socket.io-client
 
 ### Backend
